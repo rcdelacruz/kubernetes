@@ -1,0 +1,24 @@
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  name: letsencrypt-prod
+
+spec:
+  acme:
+    email: rcdelacruz@gmail.com
+    preferredChain: ''
+    privateKeySecretRef:
+      name: letsencrypt-prod
+    server: 'https://acme-v02.api.letsencrypt.org/directory'
+    solvers:
+      - dns01:
+          route53:
+            accessKeyID: AKIAW7VQO26VRIO4Z6OP  
+            hostedZoneID: Z0354608XY6EQG4CFPJM 
+            region: us-east-1
+            secretAccessKeySecretRef:
+              key: secret-access-key
+              name: acme-route53
+        selector:
+          dnsZones:
+            - thebrewery.xyz

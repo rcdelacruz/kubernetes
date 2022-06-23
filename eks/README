@@ -4,7 +4,7 @@ Pre-req:
 - **[Kubernetes client](https://kubernetes.io/docs/tasks/tools/#kubectl)** (`kubectl`) v1.24 or higher
 - **[eksctl](https://eksctl.io/)**  v0.97 or higher
 - **[Helm](https://helm.sh/)** [optional] v3.8.2 or higher
-- **ACM**
+- **ACM** or **cert-manager (let's encrypt)**
     
     ## DNS and TLS Certificate
     
@@ -77,3 +77,39 @@ $ k apply -f ingress_nginx_deploy.yaml
 $ k apply -f hello-k8s.yaml
 ```
 
+---
+
+## Using cert-manager
+
+Cert-Manager is an add-on utility for your Kubernetes Cluster, it automates the creating, issuing, and providing of certificates within your clusters. It provides a set of custom resources(YAML configuration) to issue certificates and attach them to services.
+
+One of the most common use cases is securing web apps and APIs with SSL certificates from Let’s Encrypt. The following will guide you to add Cert-Manager to your EKS or Kubernetes cluster and set up a Let’s Encrypt certificate issuer through the YAML configuration file, and acquire and expose a certificate for Pods and Services exposed through your Nginx Ingress.
+
+Install Cert-Manager
+
+```bash
+$ k apply -f https://github.com/cert-manager/cert-manager/releases/download/v1.8.0/cert-manager.yaml
+```
+
+Install ClusterIssuer
+
+```bash
+$ k create secret generic --from-literal=secret-access-key=xxxx acme-route53 -n cert-manager
+$ k apply -f clusterissuer.yaml
+
+```
+
+Test an application
+
+```bash
+$ k create ns test
+$ k apply -f nginx-test.yaml -n test
+```
+
+
+
+
+
+
+
+For more info: https://cert-manager.io/docs/usage/ingress/#how-it-works
