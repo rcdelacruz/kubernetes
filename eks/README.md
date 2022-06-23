@@ -1,4 +1,4 @@
-Pre-req:
+## Pre-req:
 
 - **[AWS CLI](https://aws.amazon.com/cli/)** (`aws`) v1.24.2 or higher (**[python](https://www.python.org/)** 3.8 installed via **[pyenv](https://github.com/pyenv/pyenv)** tested)
 - **[Kubernetes client](https://kubernetes.io/docs/tasks/tools/#kubectl)** (`kubectl`) v1.24 or higher
@@ -105,11 +105,5 @@ Test an application
 $ k create ns test
 $ k apply -f nginx-test.yaml -n test
 ```
-
-
-
-
-
-
 
 For more info: https://cert-manager.io/docs/usage/ingress/#how-it-works
