@@ -53,7 +53,7 @@ $ eksctl create cluster \
 ```
 
 ```bash
-$ k create secret generic --from-literal=aws_secret_key=lvyiavMNahKVdut+hSufdYBjlvra7Oqwyc9HAMzp  aws-creds
+$ k create secret generic --from-literal=aws_secret_key=xxxx  aws-creds
 ```
 
 Adding Ingress Support
