@@ -48,8 +48,8 @@ export ZONE_ID="Z0XXXXX"
 
 ```bash
 $ eksctl create cluster \                                                                                               
-  -f $HOME/eksctl_scripts/demo_cluster.yaml \
-  --kubeconfig=$HOME/kubeconfigs/demo-cluster-config.yaml
+  -f $HOME/kubernetes/eks/demo-cluster.yaml \
+  --kubeconfig=$HOME/kubernetes/kubeconfigs/demo-cluster-config.yaml
 ```
 
 ```bash
